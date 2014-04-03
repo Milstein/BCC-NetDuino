@@ -15,7 +15,7 @@ namespace BCCIoT
 {
     public class Program
     {
-        const string WebServiceUrlBase = "http://192.168.0.3/NetduinoWebApp/NetduinoService.svc";
+        const string WebServiceUrlBase = "http://192.168.1.3/NetduinoWebApp/NetduinoService.svc";
         const string ShouldTurnOnLedUrl = WebServiceUrlBase + "/ShouldTurnOnLed";
         const string UpdateLedStateUrl = WebServiceUrlBase + "/UpdateLedState?ledOn=";
         const string ButtonPushedUrl = WebServiceUrlBase + "/ButtonPushed";
