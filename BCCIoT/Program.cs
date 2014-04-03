@@ -15,10 +15,15 @@ namespace BCCIoT
 {
     public class Program
     {
+        // web service URLs
         const string WebServiceUrlBase = "http://192.168.1.3/NetduinoWebApp/NetduinoService.svc";
         const string ShouldTurnOnLedUrl = WebServiceUrlBase + "/ShouldTurnOnLed";
         const string UpdateLedStateUrl = WebServiceUrlBase + "/UpdateLedState?ledOn=";
         const string ButtonPushedUrl = WebServiceUrlBase + "/ButtonPushed";
+
+        // this is the virtual 'root' directory of the SD card in netduino plus
+        const string RootDirectory = @"\SD";
+
 
         static InterruptPort onboardButton;
 
@@ -35,6 +40,7 @@ namespace BCCIoT
             //FlashLedWithTimer();
             //ReadVoltage();
             //ReadVoltageWithRange();
+            //WriteToFile();
 
             // launch a thread to see if we should change the LED state
             var ledControllerThread = new Thread(new ThreadStart(LedControllerThread));
@@ -43,6 +49,16 @@ namespace BCCIoT
             // register an event for the button push
             onboardButton = new InterruptPort(Pins.ONBOARD_SW1, true, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
             onboardButton.OnInterrupt += OnboardButton_OnInterrupt;            
+        }
+
+        private static void WriteToFile()
+        {
+            string fileName = RootDirectory + "\\test.txt";
+            using (FileStream fs = File.Open(fileName, FileMode.Create))
+            {
+                StreamWriter outputFile = new StreamWriter(fs);
+                outputFile.WriteLine("Hello SD Card");
+            }
         }
 
         static void WhatIsMyIP()
