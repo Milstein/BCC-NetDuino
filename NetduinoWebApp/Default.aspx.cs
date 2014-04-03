@@ -36,5 +36,16 @@ namespace NetduinoWebApp
         {
             AppState.SetNextLedState(false);
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (Page.IsPostBack)
+            {
+                Response.Redirect(Request.UrlReferrer.ToString());
+            }
+
+            base.OnPreRender(e);
+        }
+
     }
 }

@@ -27,7 +27,9 @@ namespace BCCIoT
         {
             // handy little debugging method for out of memory tracking
             Debug.EnableGCMessages(true);
-            
+
+            //WhatIsMyIP();
+
             //FlashLed();
             //ReadButtonState();
             //FlashLedWithTimer();
@@ -41,6 +43,12 @@ namespace BCCIoT
             // register an event for the button push
             onboardButton = new InterruptPort(Pins.ONBOARD_SW1, true, Port.ResistorMode.Disabled, Port.InterruptMode.InterruptEdgeLow);
             onboardButton.OnInterrupt += OnboardButton_OnInterrupt;            
+        }
+
+        static void WhatIsMyIP()
+        {
+            string ipAddress = Microsoft.SPOT.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces()[0].IPAddress;
+            Debug.Print(ipAddress);
         }
 
         static void FlashLedWithTimer()

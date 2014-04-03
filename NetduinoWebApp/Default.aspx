@@ -11,8 +11,8 @@
     <div>
     <h1>Netduino web controller</h1>
     <div>
-        <asp:Button ID="TurnOnButton" runat="server" Text="Turn On LED" onclick="TurnOnButton_Click" />
-        <asp:Button ID="TurnOffButton" runat="server" Text="Turn Off LED" onclick="TurnOffButton_Click" />
+        <asp:Button ID="TurnOnButton" runat="server" Text="Turn On LED" onclick="TurnOnButton_Click"  UseSubmitBehavior="false"/>
+        <asp:Button ID="TurnOffButton" runat="server" Text="Turn Off LED" onclick="TurnOffButton_Click" UseSubmitBehavior="false"/>
     </div>
     <div>LED State: <%:LedState%></div>
     <div>Button press count: <%:ButtonPressCount %></div>
